@@ -19,7 +19,12 @@ cron.schedule('0 30 * * * *', function() {
     shell.exec('pm2 restart server.js price')
   
   });
-
+  cron.schedule('0 0 0 1 * *', function() {
+    console.log('---------------------');
+    console.log('Log flushd');
+    shell.exec('pm2 flush')
+  
+  });
 
 
 
