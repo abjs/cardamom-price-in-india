@@ -1,0 +1,32 @@
+{
+  "name": "cardamom-price-in-india",
+  "version": "1.0.0",
+  "description": "This is an simplified version of daly cardamom price in India",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abjs/cardamom-price-in-india.git"
+  },
+  "keywords": [
+    "cardamom",
+    "cardamom-price",
+    "node-js"
+  ],
+  "author": "Abin Joseph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abjs/cardamom-price-in-india/issues"
+  },
+  "homepage": "https://github.com/abjs/cardamom-price-in-india#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
