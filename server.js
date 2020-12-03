@@ -1,33 +1,8 @@
-
 const express = require('express');
-shell = require('shelljs');
-const cron = require('node-cron')
-
-
-require('dotenv').config();
 const app = express();
+require('dotenv').config();
 const port = process.env.PORT || 3000;
-app.use('/price',require('./route/price'));
-app.use('/',require('./route/price'));
-
-
-
-
-cron.schedule('* 12-14,16-20 * * *', function() {
-    console.log('---------------------');
-    console.log('Running Cron Job');
-    shell.exec('pm2 restart server.js price')
-  
-  });
-  cron.schedule('0 0 0 1 * *', function() {
-    console.log('---------------------');
-    console.log('Log flushd');
-    shell.exec('pm2 flush')
-  
-  });
-
-
-
-app.listen(port,(req,res)=>{
+app.use('/', require('./route/price'));
+app.listen(port, (req, res) => {
     console.log(`server start on port ${port}`)
 })
