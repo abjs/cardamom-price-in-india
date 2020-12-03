@@ -13,7 +13,7 @@ app.use('/',require('./route/price'));
 
 
 
-cron.schedule('0 30 * * * *', function() {
+cron.schedule('* 12-14,16-20 * * *', function() {
     console.log('---------------------');
     console.log('Running Cron Job');
     shell.exec('pm2 restart server.js price')
