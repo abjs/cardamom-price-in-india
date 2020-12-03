@@ -2,7 +2,7 @@
  this is an simplified version of Daly cardamom price in India
  
  
- #To run The code 
+ # To run The code 
  
  1: git clone https://github.com/abjs/cardamom-price-in-india.git <br>
  2:cd cardamom-price-in-india <br>
