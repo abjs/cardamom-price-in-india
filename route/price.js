@@ -13,6 +13,4 @@ axios.get('https://www.indianspices.com/marketing/price/domestic/daily-price.htm
             res.send( `<table>${list[1]}</table>` );   
         })
     })
-
-
 module.exports = routes
