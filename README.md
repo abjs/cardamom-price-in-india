@@ -4,7 +4,7 @@
 
 # How to run
 
-## *git clone  -b base https://github.com/abjs/cardamom-price-in-india.git* <br>
+## *git clone   https://github.com/abjs/cardamom-price-in-india.git* <br>
 ## *cd cardamom-price-in-india* <br>
 ## *npm i*
 ## *npm start* or  *npm run dev* 
