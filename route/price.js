@@ -26,16 +26,38 @@ routes.get('', async (req, res) => {
     $('table')
         .each((index, element) =>
             list.push($(element).html()))
-    res.send(`<br><table>${list[1]}</table>
-           <br>
-           <h1>BY Abin</h1>
-           <p>
-           <b>
-           Github   :<a href="https://github.com/abjs">abjs</a><br>
-           Facebook :<a href="https://www.facebook.com/itsmeabjs.me"> Abin Jooseph</a><br>
-           Insagram :<a href="http://www.insagram.com/itsmeabjs">itsmeabjs</a><br>
-           </b>
-           <p>` );
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="Cardamom Price Today">
+        <meta name="description" content="Hear you can find Cardamom Price of every day in kerala">
+        <meta name="keywords" content="Cardamom Price,elakka price,Cardamom,elakka,price of Cardamom,elakka price,Cardamom Price Today,cardamom price today in kerala,cardamom price per kg">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+        <meta name="revisit-after" content="1 days">
+        <meta name="author" content="Abin Joseph">
+        <title>Cardamom Price Today</title>
+    </head>
+    <body>
+         <table>
+             ${list[1]}
+        </table>
+        <br>
+        <h3>By Abin</h3>
+        <p>
+        <b>
+        Github   :<a href="https://github.com/abjs">abjs</a><br>
+        Facebook :<a href="https://www.facebook.com/itsmeabjs.me"> Abin Jooseph</a><br>
+        Insagram :<a href="http://www.insagram.com/itsmeabjs">itsmeabjs</a><br>
+        </b>
+        <p> 
+    </body>
+    `    
+    );
 
 })
 
