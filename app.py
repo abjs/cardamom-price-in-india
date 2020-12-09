@@ -83,30 +83,13 @@ def price(userNmae,key):
         client["price"]['today'].insert_many(r)
         print(userNmae +' Data Added successfully \nLog At' +Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
         print(Number)
-        if (Number == 1):
-            date =value[1]
-            maxp=value[6]
-            avg=value[7]
-            el_1=gensmsel(date,maxp,avg)
-            ml_1=gensmsml(date,maxp,avg)
-            sms(el_1)
-            mlsms(ml_1,env.TWILIO_ACCOUNT_PHONE_PAPPA)
-        if (Number == 2):
-            date =value[1]
-            maxp=value[6]
-            avg=value[7]
-            el_1=gensmsel(date,maxp,avg)
-            ml_1=gensmsml(date,maxp,avg)
-            maxp=value[14]
-            avg=value[15]
-            el_2=gensmsel(date,maxp,avg)
-            ml_2=gensmsml(date,maxp,avg)
-            res_1=add(el_1,el_2)
-            # print (res_1)
-            sms(res_1)
-            res_2=add(ml_1,ml_2)
-            # print(res_2)
-            mlsms(res_2,env.TWILIO_ACCOUNT_PHONE_PAPPA)
+        date =value[1]
+        maxp=value[6]
+        avg=value[7]
+        el_1=gensmsel(date,maxp,avg)
+        ml_1=gensmsml(date,maxp,avg)
+        sms(el_1)
+        mlsms(ml_1,env.TWILIO_ACCOUNT_PHONE_PAPPA)
         
     elif(x['number'] == 1):
         if (r[0]['number'] == 2):
