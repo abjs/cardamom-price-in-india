@@ -104,3 +104,6 @@ dist
 .tern-port
 node_modules
 ./package-lock.json
+__pycache__
+README.md
+env
