@@ -45,6 +45,7 @@ routes.get('', async (req, res) => {
         </b>
         <p> 
     </body>
+    </html>
     `    
     );
 
