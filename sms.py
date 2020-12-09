@@ -1,32 +1,47 @@
 # Download the helper library from https://www.twilio.com/docs/python/install
 import config as env
-def sendSMS(message,to):
-    import config
-    import os
-    from twilio.rest import Client
-    account_sid = config.TWILIO_ACCOUNT_SID
-    auth_token =config.TWILIO_AUTH_TOKEN
-    client = Client(account_sid, auth_token)
-    message = client.messages \
-                    .create(
-                        body=message,
-                        from_=config.TWILIO_ACCOUNT_PHONE,
-                        to=to
-                    )
-    print(message.sid)
 
-def message_to_list(mess):
-    sendSMS(mess,env.TWILIO_ACCOUNT_PHONE_A)#env.TWILIO_ACCOUNT_PHONE_A is  phone number
-    sendSMS(mess,env.TWILIO_ACCOUNT_PHONE_B)
-    sendSMS(mess,env.TWILIO_ACCOUNT_PHONE_AL)
-    sendSMS(mess,env.TWILIO_ACCOUNT_PHONE_AM)
-# message_to_list(mess)
+def sendSMS(message,to):
+    import requests
+    url = "https://http-api.d7networks.com/send"
+    querystring = {
+    "username":env.d7networks_UserName,
+    "password":env.d7networks_Password,
+    "from":"Test%20SMS",
+    "content":message,
+    "dlr-method":"POST",
+    "dlr-url":"https://4ba60af1.ngrok.io/receive",
+    "dlr":"yes",
+    "dlr-level":"3",
+    "to":to
+    }
+    headers = {
+    'cache-control': "no-cache"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    print(response.text)
+def message_to_list_el(mess):
+    sendSMS(mess,env.PHONE_A)#env.PHONE_A is  phone number
+    sendSMS(mess,env.PHONE_B)
+    sendSMS(mess,env.PHONE_AL)
+    sendSMS(mess,env.PHONE_AMMA)
+    # sendSMS(mess,env.PHONE_A_JIO)
+    print("messege send")
+    print("messege is \n"+mess)
+# message_to_list_el(mess)
+def message_to_list_ml(mess):
+    sendSMS(mess,env.PHONE_PAPPA)
+    sendSMS(mess,env.PHONE_A_JIO)
+    print("messege send")
+    print("messege is \n"+mess)
+
 
 
 def addMessage(message1 , message2):
     return "\n"+message1 +"\n" + message2
 def price_message_ml(date,maxprice,avgprice):
-    return "\nതീയതി\t:"+str(date)+"\n" +"പരമാവധി വില\t:" +str(maxprice)+"\n" +"ശരാശരി വില\t:" +str(avgprice)
+    # return "\nതീയതി"+str(date)+"\n"+"പരമാവധി വില" +str(maxprice)+"\n" +"ശരാശരി വില" +str(avgprice)
+    return str(date) +"\n" + str(maxprice) +"\n" +str(avgprice)
 def price_message_el(date,maxprice,avgprice):
-    return "\nDate\t:"+str(date)+"\n" +"Maximum Price\t:" +str(maxprice)+"\n" +"Average price\t:" +str(avgprice)
+    return "Date : "+str(date)+"\n"+"Maximum Price : " +str(maxprice)+"\n" +"Average price : " +str(avgprice)
 

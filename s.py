@@ -1,5 +1,5 @@
 import sms
-from sms import message_to_list as sms
+from sms import message_to_list_el as sms
 from sms import price_message_ml as gensmsml
 from sms import price_message_el as gensmsel
 from sms import addMessage as add
@@ -11,7 +11,7 @@ client = pymongo.MongoClient(env.Mogo_URL)
 db =client["price"]
 col = db['today']
 # x = col.find({}) 
-print(col.find().count({}) )
+print(col.find().count() )
 
 # print (data)
 # for i in x:
