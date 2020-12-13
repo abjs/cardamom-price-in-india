@@ -19,11 +19,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cp /home/abjs/githubDeploy/elakka/.env ./      
+      name: Environment
+    - run: cp /home/abjs/githubDeploy/elakka/.env ./  
+      name: Node Install
     - run: npm i
+      name: Python Environment
     - run: cp /home/abjs/githubDeploy/elakka/config.py ./
+      name: Python Backup
     - run: cp /home/abjs/githubDeploy/elakka/backup.py ./
+      name: Python Requirements
     - run: python3 -m pip install -r requirements.txt
+      name: PM2 Resatart
     - run: pm2 restart price
 
     
