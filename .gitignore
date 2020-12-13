@@ -109,3 +109,6 @@ README.md
 env
 test.py
 package-lock.json
+backup.py
+config.py
+.vscode

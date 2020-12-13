@@ -1,20 +1,21 @@
 const express = require('express');
 const cron = require('node-cron');
-const sys = require('sys')
+const util =require('util')
 const exec = require('child_process').exec;
 const app = express();
 var path = require('path');
 require('dotenv').config();
+require('./helpers/init_mogodb')
 const port = process.env.PORT || 3000;
 cron.schedule('* 12-20 * * *', function () {
-    function puts(error, stdout, stderr) { sys.puts(stdout) }
+    function puts(error, stdout, stderr) { util.puts(stdout) }
     exec("python3 script.py", function (err, stdout, stderr) {
         console.log(stdout);
     })
 }
 );
 cron.schedule('0,30 0-11,21-23 * * *', function () {
-  function puts(error, stdout, stderr) { sys.puts(stdout) }
+  function puts(error, stdout, stderr) { util.puts(stdout) }
   exec("python3 script.py", function (err, stdout, stderr) {
       console.log(stdout);
   })
