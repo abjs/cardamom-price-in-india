@@ -44,7 +44,7 @@ def price(userNmae,key):
     value = []
     for i in range(1, len(result)+1):
         value.append(result[i-1].get_text())
-    print(value[1])
+
     datein = value[1].split('-')
     value[1] = str(datein[0])+'-'+str(strptime(datein[1],'%b').tm_mon)+'-'+str(datein[2])
     result =[]
@@ -52,39 +52,65 @@ def price(userNmae,key):
     lenofkey 	= int(len(key))
     lenofvalue 	= int(len(value))
     Number 	= int(lenofvalue/lenofkey)
-    j=0
-    for i in value:
-        tem[key[j]] = i
-        if (j !=7 ):
-            j+=1
-        else:
-            j=0
-        result.append(tem)
-        tem={}
+    if (Number == 2):
+        value[9] = value[1]
+    print(value[1]) 
+    # j=0
+    # for i in value:
+    #     tem[key[j]] = i
+    #     if (j !=7 ):
+    #         j+=1
+    #     else:
+    #         j=0
+    #     result.append(tem)
+    #     tem={}
     #Data Prossessing End
     #Data To Mongodb database
     client = pymongo.MongoClient(env.Mogo_URL)
-    update={}
-    update['number']=Number
-    if (Number == 1 ):
-        update['_id']=value[1]
-    elif(Number == 2 ):
-        update['_id']=value[1]
-    update[value[1]]=result
-    r =[]
-    r.append(update)
+    # update={}
+    # update['number']=Number
+    # if (Number == 1 ):
+    #     update['_id']=value[1]
+    # elif(Number == 2 ):
+    #     update['_id']=value[1]
+    # update[value[1]]=result
+    # r =[]
+    # r.append(update)
+  
+    y=[]
+    x={}
+    j=0
+    for i in value:
+        tem =str(j)
+        x[tem]=i
+        j+=1
+        if (j==8):
+            y.append(x)
+            x={}
+            j=0
+    x =len(y)
+    j=0 
+    k={} 
+    for i in y:
+        tem =str(j) 
+        k[tem] = i
+        j+=1
+    k['number']=Number
+    k['_id'] =value[1]
+
     #db = client["price"]
     #collection = db['today']
     #collection.insert_many(r)
     db =client["price"]
     col = db['today']
-    x = col.find_one({"_id":value[1]}) 
-    #Log manegment
+    x = col.find_one({'_id' : value[1]} ) 
+    # Log manegment
     if(x == None):
-        client["price"]['today'].insert_many(r)
+        client["price"]['today'].insert_one(k)
         print(userNmae +' Data Added successfully \nLog At' +Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
-        if (Number == 1):
-            print(Number)
+        x = col.find_one({'_id' : value[1]} ) 
+        print(x['number'])
+        if ( x['number'] == 1):
             date =value[1]
             maxp=value[6]
             avg=value[7]
@@ -92,8 +118,7 @@ def price(userNmae,key):
             ml_1=gensmsml(date,maxp,avg)
             sms(el_1)
             mlsms(ml_1)
-        elif (Number == 2):
-            print(Number)
+        elif ( x['number'] == 2):
             date =value[1]
             maxp=value[6]
             avg=value[7]
@@ -110,12 +135,12 @@ def price(userNmae,key):
             # print(res_2)
             mlsms(res_2)
         else:
-            print("error from null if"+str(Number))
-        b()
+            print("error from null if"+str(x['number']))
+        # b()
     elif(x['number'] == 1):
-        if (r[0]['number'] == 2):
+        if ( Number == 2):
            # client["price"]['today'].remove({'_id':value[1]})  
-            client["price"]['today'].find_one_and_update({'_id':value[1]},{'$set':r[0]},upsert=True)
+            client["price"]['today'].find_one_and_update({'_id':value[1]},{'$set':k},upsert=True)
             print("Data deted and updated sussfully \nLog At" +Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
             # date =value[1]
             # maxp=value[6]
@@ -148,16 +173,16 @@ def price(userNmae,key):
             res_2=add(ml_1,ml_2)
             # print(res_2)
             mlsms(res_2)
-            b()
+            # b()
         else:
             print(userNmae +' Evening option price not yet published \nLog At'+ Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
-            b()
-    elif (x[value[1]]==r[0][value[1]]):
+            # b()
+    elif (x['_id'] == value[1]):
         print(userNmae +' evary thig is upto date \nLog At' + Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
-        b()
+        # b()
     else:
         print(userNmae +' sumthing is wrong \nLog At'+Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
-        b()
+        # b()
     #Log manegment End
     #Date to mongodb database end
 
