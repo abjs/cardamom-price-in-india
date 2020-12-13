@@ -33,7 +33,6 @@ bower_components
 
 # node-waf configuration
 .lock-wscript
-config.py
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
@@ -108,4 +107,5 @@ node_modules
 __pycache__
 README.md
 env
-config.py
+test.py
+package-lock.json

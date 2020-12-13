@@ -1,6 +1,6 @@
 # Download the helper library from https://www.twilio.com/docs/python/install
 import config as env
-
+from backup import b1
 def sendSMS(message,to):
     import requests
     url = "https://http-api.d7networks.com/send"
@@ -20,23 +20,23 @@ def sendSMS(message,to):
     }
     response = requests.request("GET", url, headers=headers, params=querystring)
     print(response.text)
+    if(response.status_code != 200):
+        print("fust backup")
+        b1(message,to)
 def message_to_list_el(mess):
-    sendSMS(mess,env.PHONE_A)#env.PHONE_A is  phone number
-    sendSMS(mess,env.PHONE_B)
-    sendSMS(mess,env.PHONE_AL)
+    # sendSMS(mess,env.PHONE_A)#env.PHONE_A is  phone number
+    # sendSMS(mess,env.PHONE_B)
+    # sendSMS(mess,env.PHONE_AL)
     sendSMS(mess,env.PHONE_AMMA)
     # sendSMS(mess,env.PHONE_A_JIO)
-    print("messege send")
     print("messege is \n"+mess)
+    print("\nmessege send to amma")
 # message_to_list_el(mess)
 def message_to_list_ml(mess):
     sendSMS(mess,env.PHONE_PAPPA)
-    sendSMS(mess,env.PHONE_A_JIO)
-    print("messege send")
-    print("messege is \n"+mess)
-
-
-
+    # sendSMS(mess,env.PHONE_A_JIO)
+    print("messege send to pappa")
+    # print("messege is \n"+mess)
 def addMessage(message1 , message2):
     return "\n"+message1 +"\n" + message2
 def price_message_ml(date,maxprice,avgprice):

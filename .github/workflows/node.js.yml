@@ -22,6 +22,7 @@ jobs:
     - run: cp /home/abjs/githubDeploy/elakka/.env ./      
     - run: npm i
     - run: cp /home/abjs/githubDeploy/elakka/config.py ./
+    - run: cp /home/abjs/githubDeploy/elakka/backup.py ./
     - run: python3 -m pip install -r requirements.txt
     - run: pm2 restart price
 

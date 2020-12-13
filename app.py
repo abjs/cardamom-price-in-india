@@ -3,6 +3,7 @@ from sms import message_to_list_ml as mlsms
 from sms import price_message_ml as gensmsml
 from sms import price_message_el as gensmsel
 from sms import addMessage as add
+from backup import data_backup as b
 import config as env
 def price(userNmae,key):
     from datetime import datetime
@@ -110,12 +111,28 @@ def price(userNmae,key):
             mlsms(res_2)
         else:
             print("error from null if"+str(Number))
-        
+        b()
     elif(x['number'] == 1):
         if (r[0]['number'] == 2):
             client["price"]['today'].remove({'_id':value[1]})  
             client["price"]['today'].insert_many(r)
             print("Data deted and updated sussfully \nLog At" +Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
+            # date =value[1]
+            # maxp=value[6]
+            # avg=value[7]
+            # el_1=gensmsel(date,maxp,avg)
+            # ml_1=gensmsml(date,maxp,avg)
+            # maxp=value[14]
+            # avg=value[15]
+            # el_2=gensmsel(date,maxp,avg)
+            # ml_2=gensmsml(date,maxp,avg)
+            # res_1=add(el_1,el_2)
+            # # print (res_1)
+            # sms(res_1)
+            # res_2=add(ml_1,ml_2)
+            # # print(res_2)
+            # mlsms(res_2)
+            print(Number)
             date =value[1]
             maxp=value[6]
             avg=value[7]
@@ -131,13 +148,16 @@ def price(userNmae,key):
             res_2=add(ml_1,ml_2)
             # print(res_2)
             mlsms(res_2)
-
+            b()
         else:
             print(userNmae +' Evening option price not yet published \nLog At'+ Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
+            b()
     elif (x[value[1]]==r[0][value[1]]):
         print(userNmae +' evary thig is upto date \nLog At' + Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
+        b()
     else:
         print(userNmae +' sumthing is wrong \nLog At'+Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
+        b()
     #Log manegment End
     #Date to mongodb database end
 
