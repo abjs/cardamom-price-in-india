@@ -1,10 +1,10 @@
 const express = require('express');
 const cron = require('node-cron');
-const util =require('util')
 const exec = require('child_process').exec;
 const app = express();
 var path = require('path');
 require('dotenv').config();
+require('util')
 require('./helpers/init_mogodb')
 const port = process.env.PORT || 3000;
 cron.schedule('* 12-20 * * *', function () {
