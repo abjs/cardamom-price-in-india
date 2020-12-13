@@ -114,8 +114,8 @@ def price(userNmae,key):
         b()
     elif(x['number'] == 1):
         if (r[0]['number'] == 2):
-            client["price"]['today'].remove({'_id':value[1]})  
-            client["price"]['today'].insert_many(r)
+           # client["price"]['today'].remove({'_id':value[1]})  
+            client["price"]['today'].find_one_and_update({'_id':value[1]},{'$set':r[0]},upsert=True)
             print("Data deted and updated sussfully \nLog At" +Time.strftime("\nTime : %I:%M %p \nDate:%d/%m/%Y"))
             # date =value[1]
             # maxp=value[6]
