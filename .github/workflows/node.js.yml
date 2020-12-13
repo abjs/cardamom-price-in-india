@@ -19,8 +19,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
-
     - name: Environment
       run : cp /home/abjs/githubDeploy/elakka/.env ./ 
     - name: Node Install     
