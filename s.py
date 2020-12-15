@@ -12,7 +12,6 @@ db =client["price"]
 col = db['today']
 # x = col.find({}) 
 print(col.find().count() )
-
 # print (data)
 # for i in x:
 #     print(i)
