@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Environment
-      run : cat Abin/node-price/.env >> .env
+      run : cat /home/abjs/Abin/node-price/.env >> .env
     - name: Node Install     
       run : npm i
     - name: Python Environment
