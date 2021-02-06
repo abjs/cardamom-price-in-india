@@ -1,6 +1,8 @@
 // const MongoClient = require('mongodb').MongoClient;
-const uri = process.env.MONGODB_URL;
-const util =require('util')
+require('dotenv').config();
+const uri =process.env.MONGODB_URL
+
+// const util =require('util')
 const mongoose = require('mongoose');
 mongoose
 .connect(uri,{
@@ -16,7 +18,7 @@ mongoose
 .catch((err)=>{
     console.log(err)
 })
-
+const connection = mongoose.connection
 mongoose.connection.on('connected',()=>{
     console.log('mongoose connected')
 })
@@ -33,3 +35,5 @@ process.on('SIGINT',async ()=>{
     await mongoose.connection.close()
     process.exit(0)
 })
+
+module.exports =connection

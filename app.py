@@ -76,9 +76,11 @@ def price(userNmae):
         evening['year']=year
         evening['date']=value[1]
     from add_data import cardamom_price_add_to_database as add
+    from config import db
+    from config import collection
     client = pymongo.MongoClient(env.Mogo_URL)
-    add(morning,client,'price_new','today',userNmae)
-    add(evening,client,'price_new','today',userNmae)
+    add(morning,client,db,collection,userNmae)
+    add(evening,client,db,collection,userNmae)
 def app():
     # key=['SL No', 'Date of Auction', 'Auctioneer', 'Number of Lots','Total Qty Arrived (Kgs)', 'Qty Sold (Kgs)', 'Maximum Price (Rs/Kg)', 'Average Price (Rs/Kg)']
     price('Abin')

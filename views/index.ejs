@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Avarage price today <%=data[data.length-1].avg %></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="img/favicon.ico"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/util.css"> -->
+	<!-- <title>Todays Price</title> -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<meta name="title" content="Cardamom Price of <%=data[0].date%>">
+	<meta name="date" content="<%=data[0].date%>">
+	<meta name="description" content="Hear you can find Cardamom Price of every day in kerala">
+	<meta name="keywords"
+		content="Cardamom Price,elakka price,Cardamom,elakka,price of Cardamom,elakka price,Cardamom Price Today,cardamom price today in kerala,cardamom price per kg">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+	<meta name="revisit-after" content="1 days">
+	<meta name="author" content="Abin Joseph">
+
+</head>
+<body>
+	<a href="/full"><button id="btn-right"   class="btn btn-dark" title="Previous Result">Previous Result</button></a>
+	<a href="/full"><button id="btn-left" class="btn btn-dark"   title="Home">Home</button></a>
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+				
+					<table>
+						<thead>
+								<tr  class="table100-head">
+								<th class="column1">Date</th>
+								<th class="column2">Auctioneer</th>
+								<th class="column3">No Lots</th>
+								<th class="column4">Total Arrived</th>
+								<th class="column5">Qty Sold</th>
+								<th class="column6">Max Price</th>
+								<th class="column7">Avg Price</th>
+
+							</tr>
+						</thead>
+						<tbody>
+				<%number=data.length 
+				if (number%2===0){
+					x=number-2
+				}
+				else {
+					x=number-1
+				}
+				count=1
+			%> 
+			<br>
+			<% for (var i=x; i <data.length;i++){ %>
+				<tr>
+					<td align="center" class="column1" >
+						<%=data[i].date%>
+					</td>
+					<td align="center" class="column2" >
+						<%=data[i].seller%>
+					</td>
+					<td class="column3" >
+						<%=data[i].lots%>
+					</td>
+					<td class="column4" >
+						<%=data[i].arrived %>
+					</td>
+					<td class="column5" >
+						<%=data[i].sold %>
+					</td>
+					<td class="column6" >
+						<%=data[i].max %>
+					</td>
+					<td class="column7" >
+						<%=data[i].avg%>
+					</td>
+				</tr>
+
+				<% } %>
+
+
+		</tbody>
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+
+</body>
+</html>

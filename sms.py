@@ -34,7 +34,7 @@ def message_to_list_el(mess):
 
 # message_to_list_el(mess)
 def message_to_list_ml(mess):
-    # sendSMS(mess,env.PHONE_PAPPA)
+    sendSMS(mess,env.PHONE_PAPPA)
     # sendSMS(mess,env.PHONE_A_JIO)
     print("messege send to pappa")
     print("messege is \n"+mess)

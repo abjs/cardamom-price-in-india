@@ -8,8 +8,22 @@
 
 
 <url>
-  <loc>https://price.itsmeabjs.me/</loc>
-  <lastmod>2020-12-04T22:04:03+00:00</lastmod>
+  <loc>https://node-price.herokuapp.com/</loc>
+  <lastmod>2020-12-16T22:01:07+00:00</lastmod>
+  <priority>1.00</priority>
+<<<<<<< HEAD
+</url>
+<url>
+  <loc>https://node-price.herokuapp.com/full</loc>
+  <lastmod>2020-12-16T22:01:07+00:00</lastmod>
+  <priority>0.80</priority>
+=======
+>>>>>>> 786ba78148501cbaab16a6a134ba15ba9417f19c
+</url>
+<url>
+  <loc>https://node-price.herokuapp.com/full</loc>
+  <lastmod>2020-12-16T22:01:07+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 

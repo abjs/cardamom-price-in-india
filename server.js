@@ -1,30 +1,23 @@
 const express = require('express');
-const cron = require('node-cron');
-const exec = require('child_process').exec;
 const app = express();
 var path = require('path');
+const ejs = require("ejs");
+require('./cron')
 require('dotenv').config();
-require('util')
 require('./helpers/init_mogodb')
-const port = process.env.PORT || 3000;
-cron.schedule('* 12-20 * * *', function () {
-    function puts(error, stdout, stderr) { util.puts(stdout) }
-    exec("python3 script.py", function (err, stdout, stderr) {
-        console.log(stdout);
-    })
-}
-);
-cron.schedule('0,30 0-11,21-23 * * *', function () {
-  function puts(error, stdout, stderr) { util.puts(stdout) }
-  exec("python3 script.py", function (err, stdout, stderr) {
-      console.log(stdout);
-  })
-}
-);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.resolve(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', require('./route/price'));
+app.use('img', express.static(path.join(__dirname, 'public/img')))
+app.use('js', express.static(path.join(__dirname, 'public/js')))
+app.use('css', express.static(path.join(__dirname, 'public/css')))
+app.use('vendor', express.static(path.join(__dirname, 'public/vendor')))
+app.use('fonts', express.static(path.join(__dirname, 'public/fonts')))
 
 
+app.use('/', require('./route/index'));
+const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {
   console.log(`server start on port ${port}`)
 })
