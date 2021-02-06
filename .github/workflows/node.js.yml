@@ -26,7 +26,6 @@ jobs:
       run : python3 -m pip install -r requirements.txt
     - name: Installing Node Dependencies    
       run : yarn install
-    - name: Restart The Web Server
-      run : pm2 restart price
+
 
     
