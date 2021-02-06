@@ -108,3 +108,4 @@ __pycache__
 README.md
 env
 test.py
+.env
