@@ -6,13 +6,10 @@ on:
 
 jobs:
   build:
-
     runs-on: self-hosted
-
     strategy:
       matrix:
         node-version: [14.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -20,16 +17,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Environment
-      run : cat /home/abjs/Abin/node-price/.env >> .env
-    - name: Node Install     
-      run : yarn install
+      run : cat /home/abjs/files/price.itsmeabjs.me >> .env
     - name: Python Environment
       run : cp ../../../config.py ./
     - name: Python Backup
       run : cp ../../../backup.py ./
-    - name: Python Requirements
+    - name: Installing Python Dependencies 
       run : python3 -m pip install -r requirements.txt
-    - name: PM2 Resatart
+    - name: Installing Node Dependencies    
+      run : yarn install
+    - name: Restart The Web Server
       run : pm2 restart price
 
     
