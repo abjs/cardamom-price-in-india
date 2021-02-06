@@ -29,7 +29,7 @@ routes.get('', async (req, res) => {
         <meta name="language" content="English">
         <meta name="revisit-after" content="1 days">
         <meta name="author" content="Abin Joseph">
-        <title>Cardamom Price Today test</title>
+        <title>Cardamom Price Today </title>
     </head>
     <body>
          <table>
