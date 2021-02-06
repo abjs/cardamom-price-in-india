@@ -22,7 +22,7 @@ jobs:
     - name: Environment
       run : cat /home/abjs/Abin/node-price/.env >> .env
     - name: Node Install     
-      run : npm i
+      run : yarn install
     - name: Python Environment
       run : cp ../../../config.py ./
     - name: Python Backup
